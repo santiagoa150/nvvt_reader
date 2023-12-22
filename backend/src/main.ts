@@ -6,8 +6,8 @@ import { NestExceptionsFilter } from './apps/shared/config/nest-exceptions.filte
 import * as process from 'process';
 
 /**
- * Asynchronous function to start the application.\
- * Bootstraps the NestJS application.
+ * Asynchronous function to start the NestJS application.\
+ * Bootstraps the NestJS application, initializes global configurations, and starts the server.
  * @returns {Promise<void>}
  */
 async function bootstrap(): Promise<void> {

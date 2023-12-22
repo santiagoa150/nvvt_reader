@@ -5,10 +5,11 @@ import * as Joi from 'joi';
  * @type {ObjectSchema}
  */
 export const EnvSchema: Joi.ObjectSchema = Joi.object({
-  APP_PREFIX: Joi.string(),
-  APP_PORT: Joi.number().port(),
-  SWAGGER_TITLE: Joi.string(),
-  SWAGGER_URL: Joi.string(),
+    APP_PREFIX: Joi.string(),
+    APP_PORT: Joi.number().port(),
+    SWAGGER_TITLE: Joi.string(),
+    SWAGGER_URL: Joi.string(),
+    MONGODB_CONNECTION_URL: Joi.string(),
 })
-  .options({ presence: 'required' })
-  .required();
+    .options({ presence: 'required' })
+    .required();
