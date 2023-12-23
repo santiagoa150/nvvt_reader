@@ -3,6 +3,9 @@ import { ICommandHandler, IEventHandler, IQueryHandler } from '@nestjs/cqrs';
 import { MongoCampaignModelProvider } from './mongo-campaign.model.provider';
 import { MongoCampaignRepositoryProvider } from './mongo-campaign.repository.provider';
 import { CampaignApplicationsProvider } from './campaign.applications.provider';
+import {
+    CreateCampaignCommandHandler,
+} from '../../../../contexts/campaign/applications/create/create-campaign.command-handler';
 
 /**
  * Providers related to Campaign handling.
@@ -24,7 +27,9 @@ export const QueryHandlers: Array<Type<IQueryHandler>> = [];
  * Command handlers for Campaign related commands.
  * @type {Array<Type<ICommandHandler>>}
  */
-export const CommandHandlers: Array<Type<ICommandHandler>> = [];
+export const CommandHandlers: Array<Type<ICommandHandler>> = [
+    CreateCampaignCommandHandler,
+];
 
 /**
  * Event handlers for Campaign related events.
