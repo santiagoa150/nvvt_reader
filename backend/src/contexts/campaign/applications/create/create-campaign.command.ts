@@ -1,8 +1,11 @@
+import { ICommand } from '@nestjs/cqrs';
+
 /**
  * Represents a command to create a new Campaign.
  * @class
+ * @implements {ICommand}
  */
-export class CreateCampaignCommand {
+export class CreateCampaignCommand implements ICommand{
 
     /**
      * @constructor

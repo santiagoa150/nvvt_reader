@@ -1,4 +1,4 @@
-import { ExceptionCore } from '../../../shared/domain/exception-core';
+import { ExceptionCore } from '../../../shared/domain/exceptions/exception-core';
 import { CampaignExceptionConstants } from './campaign-exception.constants';
 import { HttpStatus } from '@nestjs/common';
 

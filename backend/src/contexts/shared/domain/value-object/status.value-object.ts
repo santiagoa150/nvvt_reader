@@ -1,5 +1,5 @@
 import { StringValueObject } from './string.value-object';
-import { ExceptionCore } from '../exception-core';
+import { ExceptionCore } from '../exceptions/exception-core';
 
 /**
  * Represents a value object for status strings, extending StringValueObject.

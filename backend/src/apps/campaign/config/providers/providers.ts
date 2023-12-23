@@ -6,6 +6,12 @@ import { CampaignApplicationsProvider } from './campaign.applications.provider';
 import {
     CreateCampaignCommandHandler,
 } from '../../../../contexts/campaign/applications/create/create-campaign.command-handler';
+import {
+    SearchCampaignQueryHandler,
+} from '../../../../contexts/campaign/applications/search/by-id/search-campaign.query-handler';
+import {
+    SearchPaginatedCampaignsQueryHandler,
+} from '../../../../contexts/campaign/applications/search/paginated/search-paginated-campaigns.query-handler';
 
 /**
  * Providers related to Campaign handling.
@@ -21,7 +27,10 @@ export const Providers: Array<Provider> = [
  * Query handlers for Campaign related queries.
  * @type {Array<Type<IQueryHandler>>}
  */
-export const QueryHandlers: Array<Type<IQueryHandler>> = [];
+export const QueryHandlers: Array<Type<IQueryHandler>> = [
+    SearchCampaignQueryHandler,
+    SearchPaginatedCampaignsQueryHandler,
+];
 
 /**
  * Command handlers for Campaign related commands.

@@ -8,6 +8,9 @@ import { CampaignNotFoundException } from '../domain/exceptions/campaign-not-fou
 import {
     ThereIsAlreadyAnActiveCampaignException,
 } from '../domain/exceptions/there-is-already-an-active-campaign.exception';
+import { PaginationPage } from '../../shared/domain/pagination-page';
+import { PaginationLimit } from '../../shared/domain/pagination-limit';
+import { PaginationType } from '../../shared/domain/types/pagination.type';
 
 /**
  * Class responsible for handling Campaign-related applications.
@@ -65,5 +68,35 @@ export class CampaignApplications {
         if (throwExceptionIfNotfound && !campaign) throw new CampaignNotFoundException();
         this.logger.log(`[${this.searchActive.name}] FINISH ::`);
         return campaign;
+    }
+
+    /**
+     * Searches for a campaign by its unique identifier.
+     * @param {CampaignId} campaignId - The unique identifier of the campaign to search for.
+     * @param {boolean} throwExceptionIfNotFound - Indicates whether to throw an exception if the campaign is not found. Defaults to true.
+     * @returns {Promise<Campaign | undefined>} - A promise resolving to the found campaign or undefined if not found.
+     * @throws {CampaignNotFoundException} - Throws an exception if the campaign is not found and `throwExceptionIfNotFound` is true.
+     * @public
+     * @async
+     */
+    async searchById(campaignId: CampaignId, throwExceptionIfNotFound: boolean = true): Promise<Campaign | undefined> {
+        this.logger.log(`[${this.searchById.name}] INIT ::`);
+        const campaign: Campaign | undefined = await this.repository.searchById(campaignId);
+        if (throwExceptionIfNotFound && !campaign) throw new CampaignNotFoundException();
+        this.logger.log(`[${this.searchById.name}] FINISH ::`);
+        return campaign;
+    }
+
+    /**
+     * Searches for paginated Campaign data.
+     * @param {PaginationPage} page - The PaginationPage object for pagination.
+     * @param {PaginationLimit} limit - The PaginationLimit object for pagination limit.
+     * @returns {Promise<PaginationType<Campaign>>} A Promise resolving to PaginationType containing Campaign data.
+     */
+    async searchPaginated(page: PaginationPage, limit: PaginationLimit): Promise<PaginationType<Campaign>> {
+        this.logger.log(`[${this.searchPaginated.name}] INIT :: page: ${page.toNumber()}, limit: ${limit.toNumber()}`);
+        const campaigns: PaginationType<Campaign> = await this.repository.searchPaginated(page, limit);
+        this.logger.log(`[${this.searchPaginated.name}] FINISH ::`);
+        return campaigns;
     }
 }

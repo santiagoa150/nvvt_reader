@@ -11,5 +11,9 @@ export enum CampaignHttpConstants {
     /**
      * Tag representing campaign-related operations.
      */
-    TAG = 'Campaign'
+    TAG = 'Campaign',
+    /**
+     * URL for getting paginated campaigns.
+     */
+    URL_GET_PAGINATED = 'all',
 }

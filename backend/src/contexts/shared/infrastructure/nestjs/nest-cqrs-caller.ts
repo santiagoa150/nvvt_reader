@@ -1,5 +1,5 @@
 import { CommandBus, EventBus, ICommand, IEvent, IQuery, QueryBus } from '@nestjs/cqrs';
-import { CqrsConfig } from '../../domain/cqrs.config';
+import { CqrsConfigType } from '../../domain/types/cqrs-config.type';
 import { CqrsCaller } from '../../domain/gateways/cqrs-caller';
 import { Injectable, Logger } from '@nestjs/common';
 
@@ -31,13 +31,13 @@ export class NestCqrsCaller implements CqrsCaller {
      * Dispatches a command using CommandBus.
      * @template R
      * @param {ICommand} command - The command to dispatch.
-     * @param {CqrsConfig} [options] - Optional configuration for the command dispatch.
+     * @param {CqrsConfigType} [options] - Optional configuration for the command dispatch.
      * @returns {Promise<R>} - Resolves with the result of the command execution.
      * @public
      * @async
      */
-    public async dispatch<R = unknown>(command: ICommand, options?: CqrsConfig): Promise<R> {
-        const config: CqrsConfig = options ?? new CqrsConfig();
+    public async dispatch<R = unknown>(command: ICommand, options?: CqrsConfigType): Promise<R> {
+        const config: CqrsConfigType = options ?? new CqrsConfigType();
         if (config.showLogs) {
             let log: string = `[${this.dispatch.name}] INIT :: Dispatching Command :: ${command.constructor.name}`;
             if (config.showInit) log += ` :: ${JSON.stringify(command)}`;
@@ -56,13 +56,13 @@ export class NestCqrsCaller implements CqrsCaller {
      * Executes a query using QueryBus.
      * @template R
      * @param {IQuery} query - The query to execute.
-     * @param {CqrsConfig} [options] - Optional configuration for the query execution.
+     * @param {CqrsConfigType} [options] - Optional configuration for the query execution.
      * @returns {Promise<R>} - Resolves with the result of the query execution.
      * @public
      * @async
      */
-    public async query<R = unknown>(query: IQuery, options?: CqrsConfig): Promise<R> {
-        const config: CqrsConfig = options ?? new CqrsConfig();
+    public async query<R = unknown>(query: IQuery, options?: CqrsConfigType): Promise<R> {
+        const config: CqrsConfigType = options ?? new CqrsConfigType();
         if (config.showLogs) {
             let log: string = `[${this.query.name}] INIT :: Executing query :: ${query.constructor.name}`;
             if (config.showInit) log += ` :: ${JSON.stringify(query)}`;
@@ -80,13 +80,13 @@ export class NestCqrsCaller implements CqrsCaller {
     /**
      * Emits an event using EventBus.
      * @param {IEvent} event - The event to emit.
-     * @param {CqrsConfig} [options] - Optional configuration for emitting the event.
+     * @param {CqrsConfigType} [options] - Optional configuration for emitting the event.
      * @returns {Promise<void>} - Resolves after emitting the event.
      * @public
      * @async
      */
-    public async emit(event: IEvent, options?: CqrsConfig): Promise<void> {
-        const config: CqrsConfig = options ?? new CqrsConfig();
+    public async emit(event: IEvent, options?: CqrsConfigType): Promise<void> {
+        const config: CqrsConfigType = options ?? new CqrsConfigType();
         if (config.showLogs) {
             let log: string = `[${this.emit.name}] INIT :: Emitting Event :: ${event.constructor.name}`;
             if (config.showInit) log += ` :: ${JSON.stringify(event)}`;

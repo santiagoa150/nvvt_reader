@@ -1,8 +1,8 @@
 import { ArgumentsHost, Catch, ExceptionFilter, HttpException, HttpStatus, Logger } from '@nestjs/common';
-import { ExceptionCore } from '../../../contexts/shared/domain/exception-core';
-import { ExceptionResponse } from '../../../contexts/shared/domain/exception-response';
+import { ExceptionCore } from '../../../contexts/shared/domain/exceptions/exception-core';
+import { ExceptionResponse } from '../../../contexts/shared/domain/exceptions/exception-response';
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
-import { SharedExceptionConstants } from '../../../contexts/shared/domain/constants/shared-exception.constants';
+import { SharedExceptionConstants } from '../../../contexts/shared/domain/exceptions/shared-exception.constants';
 import { HttpArgumentsHost } from '@nestjs/common/interfaces';
 import { Response } from 'express';
 

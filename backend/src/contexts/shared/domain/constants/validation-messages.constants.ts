@@ -53,6 +53,30 @@ export enum ValidationMessagesConstants {
      */
     MAGAZINE_URL_MUST_BE_STRING = 'MAGAZINE_URL_MUST_BE_STRING',
     /**
+     * Error message for pagination limit being less than or equal to zero.
+     */
+    PAGINATION_LIMIT_MUST_BE_GREATER_THAN_ZERO = 'PAGINATION_LIMIT_MUST_BE_GREATER_THAN_ZERO',
+    /**
+     * Error message for pagination limit not being an integer.
+     */
+    PAGINATION_LIMIT_MUST_BE_INTEGER = 'PAGINATION_LIMIT_MUST_BE_INTEGER',
+    /**
+     * Error message for missing pagination limit.
+     */
+    PAGINATION_LIMIT_IS_REQUIRED = 'PAGINATION_LIMIT_IS_REQUIRED',
+    /**
+     * Error message for pagination page being less than or equal to zero.
+     */
+    PAGINATION_PAGE_MUST_BE_GREATER_THAN_ZERO = 'PAGINATION_PAGE_MUST_BE_GREATER_THAN_ZERO',
+    /**
+     * Error message for pagination page not being an integer.
+     */
+    PAGINATION_PAGE_MUST_BE_INTEGER = 'PAGINATION_PAGE_MUST_BE_INTEGER',
+    /**
+     * Error message for missing pagination page.
+     */
+    PAGINATION_PAGE_IS_REQUIRED = 'PAGINATION_PAGE_IS_REQUIRED',
+    /**
      * Error message when the prestigious URL is required.
      */
     PRESTIGIOUS_URL_IS_REQUIRED = 'PRESTIGIOUS_URL_IS_REQUIRED',

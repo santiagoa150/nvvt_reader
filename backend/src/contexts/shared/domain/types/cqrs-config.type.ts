@@ -2,7 +2,7 @@
  * Configuration options for CQRS (Command Query Responsibility Segregation) handling.
  * @class
  */
-export class CqrsConfig {
+export class CqrsConfigType {
     /**
      * Determines whether to display initialization information.
      * @type {boolean}
